@@ -26,7 +26,7 @@ rvm gemset use quotes
 gem install bundle
 bundle install
 ```
-5. sign up for AWS if you havent. Launch a new S3 instance, choose Ubuntu. micro if you want it to stay free.
+5. sign up for AWS if you havent. Launch a new EC2 instance, choose Ubuntu. micro if you want it to stay free.
 6. Create key pair.
 7. Add HTTP port 80 into the security group.
 8. Select the newly created key pair.
