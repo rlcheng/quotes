@@ -8,9 +8,9 @@ describe 'POST /users', type: :request do
     post '/users', params
     response_body = JSON.parse(response.body)
     expect(response.status).to eq(200)
-    expect(response_body["email"]).to eq(params[:email])
+    #expect(response_body["email"]).to eq(params[:email])
     #refactor later for the following, after session model is complete
-    #expect(response_body["data"]["attributes"]["email"]).to eq(params[:email])
+    expect(response_body["data"]["attributes"]["email"]).to eq(params[:email])
   end
 
   it "should not create an user with invalid parameters" do
@@ -26,8 +26,8 @@ describe "DELETE /users", type: :request do
   let!(:user) { FactoryGirl.create(:user, email: 'delete@me.com')}
 
   it "should delete a user" do
-    count = User.count
+    user_count = User.count
     delete "/users/#{user.id}", format: :json
-    expect(User.count).to eq(count - 1)
+    expect(User.count).to eq(user_count - 1)
   end
 end
