@@ -1,4 +1,6 @@
+require 'omniauth'
 require 'simplecov'
+
 SimpleCov.start 'rails' do
   coverage_dir 'spec/simplecov'
 end
@@ -43,6 +45,18 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
+
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    :provider => 'github',
+    :uid => '12345',
+    :info => {
+      'email' => 'user_one@example.com'
+    },
+    :credentials => {
+      'token' => "mock_token"
+    }
+  })
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
