@@ -1,6 +1,8 @@
 ##README
 This is a JSON API app that contains quotes from famous people.
 
+[![Code Climate](https://codeclimate.com/github/rlcheng/quotes/badges/gpa.svg)](https://codeclimate.com/github/rlcheng/quotes)
+[![Coverage Status](https://coveralls.io/repos/rlcheng/quotes/badge.svg?branch=master&service=github)](https://coveralls.io/github/rlcheng/quotes?branch=master)
 
 ###To install:
 
