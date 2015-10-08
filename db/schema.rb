@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002221618) do
+ActiveRecord::Schema.define(version: 20151007233245) do
+
+  create_table "quotes", force: :cascade do |t|
+    t.string   "author"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string   "oauth_token"
