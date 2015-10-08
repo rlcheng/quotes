@@ -16,6 +16,7 @@ group :development, :test do
   gem 'rspec_api_documentation'
   gem 'rspec-rails', '~> 3.0'
   gem 'simplecov', :require => false  
+  gem 'coveralls', :require => false
 end
 
 group :production do

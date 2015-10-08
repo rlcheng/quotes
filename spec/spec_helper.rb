@@ -1,5 +1,8 @@
 require 'omniauth'
 require 'simplecov'
+require 'coveralls'
+
+Coveralls.wear!
 
 SimpleCov.start 'rails' do
   coverage_dir 'spec/simplecov'

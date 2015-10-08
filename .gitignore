@@ -21,4 +21,5 @@
 
 .ruby-version
 
-
+#Ignore coveralls yaml file
+/.coveralls.yml
