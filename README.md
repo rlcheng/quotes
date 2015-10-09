@@ -10,6 +10,8 @@ This is a JSON API app that contains quotes from famous people.
 
 ```sh
 bundle install
+rake db:migrate
+rake db:seed
 rails s
 ```
 
@@ -17,6 +19,76 @@ rails s
 ```sh
 curl http://localhost:3000/ping
 ```
+or go to the **URL** via your favorite browser
+
+###Production Deployment
+Done via **AWS Nginx+Passenger Capistrano** @ http://ec2-52-26-70-53.us-west-2.compute.amazonaws.com/
+Go to http://ec2-52-26-70-53.us-west-2.compute.amazonaws.com/ping to see if server is up.
+
+###Usage
+Currently without need to establish session
+#####get quotes#index
+- To get all quotes, using Postman (Chrome plugin), set as **GET**, http://localhost:3000/quotes or http://ec2-52-26-70-53.us-west-2.compute.amazonaws.com/quotes
+- On the **Header** tab, need it to be header => `Content-Type` and value => `application/json`
+- Hit `send` and you will see quotes#index returned.
+
+#####post quotes#create
+- To create a new quote, using Postman, set as **POST**, http://localhost:3000/quotes or http://ec2-52-26-70-53.us-west-2.compute.amazonaws.com/quotes
+- On the **Header** tab, need it to be header => `Content-Type` and value => `application/json`
+- On the **Body** tab, need it to be **raw** and the format of the new quote should be like the following:
+```sh
+{
+    "author": "Confucius",
+    "body": "Wherever you go, go with all your heart."
+}
+```
+- Hit `send` and you will see the app do a quotes#show in the following format:
+```sh
+{
+  "data": {
+    "id": "3",
+    "type": "quotes",
+    "attributes": {
+      "author": "Confucius",
+      "body": "Wherever you go, go with all your heart."
+    }
+  }
+}
+```
+
+#####patch quotes#update
+- To update a quote, using Postman, set as **PATCH**, http://localhost:3000/quotes/1 or http://ec2-52-26-70-53.us-west-2.compute.amazonaws.com/quotes/1 Substitude 1 for the ID of the quote you wish to update.
+- On the **Header** tab, need it to be header => `Content-Type` and value => `application/json`
+- On the **Body** tab, need it to be **raw** and the format of the new quote should be like the following:
+```sh
+{
+    "author": "Confucius",
+    "body": "Choose a job you love, and you will never have to work a day in your life."
+}
+```
+- Hit `send` and you will see the app do a quotes#show in the following format:
+```sh
+{
+  "data": {
+    "id": "3",
+    "type": "quotes",
+    "attributes": {
+      "author": "Confucius",
+      "body": "Choose a job you love, and you will never have to work a day in your life."
+    }
+  }
+}
+```
+
+#####get quote#show
+- To get a single quote, using Postman, set as **GET**, http://localhost:3000/quotes/1 or http://ec2-52-26-70-53.us-west-2.compute.amazonaws.com/quotes/1 Substitude 1 for the ID of the quote you wish to see.
+- On the **Header** tab, need it to be header => `Content-Type` and value => `application/json`
+- Hit `send` and you will see the app do a quotes#show
+
+#####delete quote#destroy
+- To delete a quote, using Postman, set as **DELETE**, http://localhost:3000/quotes/1 or http://ec2-52-26-70-53.us-west-2.compute.amazonaws.com/quotes/1  Substitute 1 for the ID of the quote you wish to destroy.
+- On the **Header** tab, need it to be header => `Content-Type` and value => `application/json`
+- Hit `send` and you should get a status **204** in return, but to be sure you can print the index again.
 
 ####AWS Nginx+Passenger Capistrano Guide
 #####Local Host
