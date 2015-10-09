@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :sessions, defaults: {format: :json}
   resources :quotes, defaults: {format: :json}
 
-  root to: 'haikus#index'
+  root to: 'quotes#index'
 end
