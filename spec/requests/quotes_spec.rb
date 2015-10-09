@@ -24,9 +24,8 @@ describe "/quotes#create", type: :request do
   quote = FactoryGirl.build(:quote, author: "Winston Churchill",
     body: "Attitude is a little thing that makes a big difference.")
   it "should create a quote" do
-    me = post "/quotes", format: :json, author: quote.author,
+    post "/quotes", format: :json, author: quote.author,
       body: quote.body
-    puts me
     expect(Quote.last.author).to eq(quote.author)
     expect(Quote.last.body).to eq(quote.body)
   end

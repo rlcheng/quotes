@@ -8,8 +8,6 @@ describe 'POST /users', type: :request do
     post '/users', params
     response_body = JSON.parse(response.body)
     expect(response.status).to eq(200)
-    #expect(response_body["email"]).to eq(params[:email])
-    #refactor later for the following, after session model is complete
     expect(response_body["data"]["attributes"]["email"]).to eq(params[:email])
   end
 

@@ -4,6 +4,12 @@ require 'coveralls'
 
 Coveralls.wear!
 
+#Need the following or else SimpleCov will not generate report
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
+
 SimpleCov.start 'rails' do
   coverage_dir 'spec/simplecov'
 end
